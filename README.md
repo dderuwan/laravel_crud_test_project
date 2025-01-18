@@ -29,7 +29,7 @@ This project is a simple CRUD (Create, Read, Update, Delete) application built u
 
 Follow these steps to set up the application locally:
 
-1. Clone the repository:
+* Follow these Steps:
    ```bash
    git clone <repository_url>
    cd <project_directory>
@@ -38,7 +38,7 @@ Follow these steps to set up the application locally:
    **************************************************
    cp .env.example .env
 
-   .env file DB section -------
+  .env file DB section -------
    
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
