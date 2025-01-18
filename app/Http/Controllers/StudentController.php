@@ -40,7 +40,7 @@ class StudentController extends Controller
         //method2
         //  $student = Student::create($request->all());
 
-        return "Success Std";
+        return redirect()->route('student.index');
 
     }
 
@@ -52,19 +52,32 @@ class StudentController extends Controller
 
     public function update(Request $request, $student_id)
     {
-    $student = Student::where('id',$student_id)->first();
-    $student->first_name = $request->first_name;
-    $student->last_name = $request->last_name;
-    $student->contact_no=$request->contact_no;
-    $student->address=$request->address;
-    $student->dob=$request->dob;
+        $student = Student::where('id', $student_id)->first();
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->contact_no = $request->contact_no;
+        $student->address = $request->address;
+        $student->dob = $request->dob;
 
-    $student->save();
-    return redirect()->route('student.index');
+        $student->save();
+
+        $rules = [
+            'first_name' => 'required|string',
+            'address' => 'required|string'
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages = ['first_name.required' => 'first nMae eka ko oi', 'address.required' => 'address ekath na ane mnda']);
+
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        return redirect()->route('student.index');
     }
 
-    public function delete($student_id){
-        Student::where('id',$student_id)->delete();
+    public function delete($student_id)
+    {
+        Student::where('id', $student_id)->delete();
         return redirect()->route('student.index');
     }
 

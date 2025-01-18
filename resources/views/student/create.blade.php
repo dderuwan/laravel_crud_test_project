@@ -13,16 +13,16 @@
 <body class="container">
     <form class="mt-5" action="{{ route('student.store') }}" method="POST">
         @csrf
-        @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
 
-            </ul>
-        </div>
-        
+                </ul>
+            </div>
+
         @endif
         <div class="form-group">
             <label for="exampleInputEmail1">Student First Name</label>
@@ -44,7 +44,11 @@
             <label for="exampleInputEmail1">Student Birthday</label>
             <input type="text" class="form-control" placeholder="Enter Student Birthday" name="dob">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary ">Submit</button>
+            <a href="{{ route('student.index') }}" class="btn btn-dark">Back</a>
+        </div>
+
     </form>
 </body>
 

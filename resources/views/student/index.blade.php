@@ -11,7 +11,8 @@
 </head>
 
 <body class="container">
-    <a href="{{ route('student.create') }}" class="btn btn-primary mt-2 mb-2">Create</a>
+    <a href="{{ route('student.create') }}" class="btn btn-primary mt-5 mb-2">Create New Student</a>
+    <hr/>
     <table class="table table-striped">
         <thead>
             <tr>

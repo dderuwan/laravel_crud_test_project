@@ -45,7 +45,11 @@
             <label for="exampleInputEmail1">Student Birthday</label>
             <input type="text" class="form-control" placeholder="Enter Student Birthday" name="dob" value="{{ $student->dob }}">
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
+        <div class="mt-3">
+           <button type="submit" class="btn btn-primary ">Update</button>
+           <a href="{{ route('student.index') }}" type="" class="btn btn-dark ">Back</a>
+        </div>
+
     </form>
 </body>
 
