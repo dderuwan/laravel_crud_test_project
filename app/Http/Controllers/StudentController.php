@@ -22,7 +22,7 @@ class StudentController extends Controller
             'address' => 'required|string'
         ];
 
-        $validator = Validator::make($request->all(), $rules, $messages = ['first_name.required' => 'first nMae eka ko oi', 'address.required' => 'address ekath na ane mnda']);
+        $validator = Validator::make($request->all(), $rules, $messages = ['first_name.required' => 'First Name is Required', 'address.required' => 'Address is Required']);
 
 
         if ($validator->fails()) {
@@ -52,6 +52,16 @@ class StudentController extends Controller
 
     public function update(Request $request, $student_id)
     {
+        $rulesedit = [
+            'first_name' => 'required|string',
+            'address' => 'required|string'
+        ];
+        $validatoredit = Validator::make($request->all(), $rulesedit, $messages = ['first_name.required' => 'First Name is Required', 'address.required' => 'Address is Required']);
+
+
+        if ($validatoredit->fails()) {
+            return redirect()->back()->withErrors($validatoredit)->withInput();
+        }
         $student = Student::where('id', $student_id)->first();
         $student->first_name = $request->first_name;
         $student->last_name = $request->last_name;
@@ -61,16 +71,7 @@ class StudentController extends Controller
 
         $student->save();
 
-        $rules = [
-            'first_name' => 'required|string',
-            'address' => 'required|string'
-        ];
-        $validator = Validator::make($request->all(), $rules, $messages = ['first_name.required' => 'first nMae eka ko oi', 'address.required' => 'address ekath na ane mnda']);
 
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
 
         return redirect()->route('student.index');
     }
