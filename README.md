@@ -33,3 +33,31 @@ Follow these steps to set up the application locally:
    ```bash
    git clone <repository_url>
    cd <project_directory>
+   **************************************************
+   composer install
+   **************************************************
+   cp .env.example .env
+
+   .env file DB section -------
+   
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=your_database_name
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   **************************************************
+   php artisan migrate
+   **************************************************
+   php artisan db:seed
+   **************************************************
+   php artisan serve
+   **************************************************
+   http://127.0.0.1:8000
+
+
+
+
+
+
+
